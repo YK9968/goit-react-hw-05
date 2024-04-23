@@ -2,6 +2,8 @@ body {
   font-family: sans-serif;
   line-height: 1.5;
   margin: 0;
+  padding: 0 15px;
+  background-color: rgb(94, 85, 114);
 }
 
 h1,

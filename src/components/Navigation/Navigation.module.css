@@ -1,0 +1,19 @@
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  padding-bottom: 5px;
+  border-bottom: 1px solid white;
+}
+
+.nav {
+  padding: 20px 0;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.navList {
+  display: flex;
+  gap: 20px;
+}
