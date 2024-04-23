@@ -1,0 +1,36 @@
+.detailsContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.filmTitle {
+  margin-bottom: 20px;
+}
+
+.filmText {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.textFilm {
+  font-size: 20px;
+}
+
+.detailsFilm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.moreDetailsFilm {
+  display: flex;
+  gap: 20px;
+}
+
+.filmInfo {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+.filmInfo:hover {
+  color: rgb(255, 255, 255);
+}
