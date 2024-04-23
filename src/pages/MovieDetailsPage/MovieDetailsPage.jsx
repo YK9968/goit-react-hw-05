@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 import { aboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
@@ -41,48 +41,55 @@ export default function MovieDetailsPage() {
   return (
     <div>
       {loading && <Loading />}
+
+      <button>Back</button>
       {filmDetails && (
-        <div className={css.detailsContainer}>
-          <img src={poster} alt={title} />
-          <div className={css.detailsFilm}>
-            <ul>
-              <li>
-                <h1 className={css.filmTitle}>
-                  {title} ({release_date})
-                </h1>
-              </li>
-              <li>
-                <p className={css.filmText}>
-                  <b className={css.textFilm}>User Score: </b>
-                  <br />
-                  {vote_average.toFixed(1)}
-                </p>
-              </li>
-              <li>
-                <p className={css.filmText}>
-                  <b className={css.textFilm}>Overview: </b>
-                  <br />
-                  {overview}
-                </p>
-              </li>
-              <li>
-                <p className={css.filmText}>
-                  <b className={css.textFilm}>Genres: </b>
-                  <br />
-                  {genres.map((genre) => (
-                    <span key={genre.id}>{genre.name}, </span>
-                  ))}
-                </p>
-              </li>
-            </ul>
-            <ul className={css.moreDetailsFilm}>
-              <Link className={css.filmInfo} to="cast">
-                Cast
-              </Link>
-              <Link className={css.filmInfo} to="review">
-                Reviews
-              </Link>
-            </ul>
+        <div>
+          <div className={css.detailsContainer}>
+            <img src={poster} alt={title} />
+            <div className={css.detailsFilm}>
+              <ul>
+                <li>
+                  <h1 className={css.filmTitle}>
+                    {title} ({release_date})
+                  </h1>
+                </li>
+                <li>
+                  <p className={css.filmText}>
+                    <b className={css.textFilm}>User Score: </b>
+                    <br />
+                    {vote_average.toFixed(1)}
+                  </p>
+                </li>
+                <li>
+                  <p className={css.filmText}>
+                    <b className={css.textFilm}>Overview: </b>
+                    <br />
+                    {overview}
+                  </p>
+                </li>
+                <li>
+                  <p className={css.filmText}>
+                    <b className={css.textFilm}>Genres: </b>
+                    <br />
+                    {genres.map((genre) => (
+                      <span key={genre.id}>{genre.name}, </span>
+                    ))}
+                  </p>
+                </li>
+              </ul>
+              <ul className={css.moreDetailsFilm}>
+                <Link className={css.filmInfo} to="cast">
+                  Cast
+                </Link>
+                <Link className={css.filmInfo} to="review">
+                  Reviews
+                </Link>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <Outlet />
           </div>
         </div>
       )}

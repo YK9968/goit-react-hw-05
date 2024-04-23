@@ -3,7 +3,7 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
 const options = {
   params: {
-    append_to_response: "credits,reviews",
+    append_to_response: "credits,reviews,images",
   },
   headers: {
     Authorization:
