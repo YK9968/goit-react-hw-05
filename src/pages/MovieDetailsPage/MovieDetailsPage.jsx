@@ -4,6 +4,7 @@ import { aboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
+import { FaStar } from "react-icons/fa";
 
 export default function MovieDetailsPage() {
   const [filmDetails, setFilmDetails] = useState(null);
@@ -45,12 +46,12 @@ export default function MovieDetailsPage() {
       {loading && <Loading />}
 
       <Link className={css.backBtn} to={backLinkHref}>
-        Back
+        Go Back
       </Link>
       {filmDetails && (
         <div>
           <div className={css.detailsContainer}>
-            <img src={poster} alt={title} />
+            <img className={css.poster} src={poster} alt={title} />
             <div className={css.detailsFilm}>
               <ul>
                 <li>
@@ -61,21 +62,20 @@ export default function MovieDetailsPage() {
                 <li>
                   <p className={css.filmText}>
                     <b className={css.textFilm}>User Score: </b>
-                    <br />
+
                     {vote_average.toFixed(1)}
+                    <FaStar className={css.iconStar} />
                   </p>
                 </li>
                 <li>
                   <p className={css.filmText}>
                     <b className={css.textFilm}>Overview: </b>
-                    <br />
                     {overview}
                   </p>
                 </li>
                 <li>
                   <p className={css.filmText}>
                     <b className={css.textFilm}>Genres: </b>
-                    <br />
                     {genres.map((genre) => (
                       <span key={genre.id}>{genre.name}, </span>
                     ))}

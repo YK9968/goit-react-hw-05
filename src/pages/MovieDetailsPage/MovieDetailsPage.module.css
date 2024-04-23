@@ -8,13 +8,20 @@
   margin-bottom: 10px;
 }
 
+.poster {
+  border-radius: 5px;
+}
+
 .filmText {
   margin-bottom: 10px;
   font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
 }
 
 .textFilm {
-  font-size: 20px;
+  font-size: 15px;
+  color: rgb(255, 255, 255);
 }
 
 .detailsFilm {
@@ -30,7 +37,7 @@
 
 .filmInfo {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(192, 192, 192);
 }
 .filmInfo:hover {
   color: rgb(255, 255, 255);
@@ -39,16 +46,22 @@
 .backBtn {
   display: inline-block;
   text-align: center;
-  padding: 5px;
-  width: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
   margin-bottom: 10px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 5px;
 }
 
 .backBtn:hover {
   border: 1px solid rgb(255, 255, 255);
 
   color: rgb(255, 255, 255);
+}
+
+.iconStar {
+  top: 2px;
+  left: 113px;
+  position: absolute;
 }

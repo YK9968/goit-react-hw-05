@@ -1,0 +1,20 @@
+.changeTop {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.changeTop:hover {
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}

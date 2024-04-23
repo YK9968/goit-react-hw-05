@@ -8,8 +8,8 @@ const options = {
   },
 };
 
-export const fetchTrendingFilms = async () => {
-  const response = axios.get("trending/movie/day?language=en-US", options);
+export const fetchTrendingFilms = async (top) => {
+  const response = axios.get(`trending/movie/${top}?language=en-US`, options);
 
   return (await response).data.results;
 };
