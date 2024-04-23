@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { aboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
@@ -11,6 +11,8 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
 
   const { filmId } = useParams();
+  const location = useLocation();
+  const backLinkHref = location.state ?? "/";
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
@@ -42,7 +44,9 @@ export default function MovieDetailsPage() {
     <div>
       {loading && <Loading />}
 
-      <button>Back</button>
+      <Link className={css.backBtn} to={backLinkHref}>
+        Back
+      </Link>
       {filmDetails && (
         <div>
           <div className={css.detailsContainer}>
@@ -50,9 +54,9 @@ export default function MovieDetailsPage() {
             <div className={css.detailsFilm}>
               <ul>
                 <li>
-                  <h1 className={css.filmTitle}>
+                  <h2 className={css.filmTitle}>
                     {title} ({release_date})
-                  </h1>
+                  </h2>
                 </li>
                 <li>
                   <p className={css.filmText}>
