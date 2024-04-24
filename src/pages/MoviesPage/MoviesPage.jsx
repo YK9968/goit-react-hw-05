@@ -3,6 +3,7 @@ import { fetchSearchFilms } from "../../api-search-film";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import MovieList from "../../components/MovieList/MovieList";
+import { useSearchParams } from "react-router-dom";
 // import css from "./MoviesPage.module.css";
 
 export default function MoviesPage() {
@@ -10,6 +11,8 @@ export default function MoviesPage() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
+
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (!query) {
@@ -48,7 +51,7 @@ export default function MoviesPage() {
           autoComplete="off"
           placeholder="Search films"
         />
-        <button type="submit">Search film</button>
+        <button type="submit">Search</button>
       </form>
       {loading && <Loading />}
       {films.length > 0 && <MovieList films={films} />}

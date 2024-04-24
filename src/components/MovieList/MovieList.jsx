@@ -4,8 +4,6 @@ import css from "./MovieList.module.css";
 export default function MovieList({ films }) {
   const location = useLocation();
 
-  console.log(films);
-
   return (
     <ul className={css.filmContainer}>
       {films.map((film) => (
