@@ -39,7 +39,9 @@ export default function MovieDetailsPage() {
   const { title, overview, genres, poster_path, release_date, vote_average } =
     filmDetails;
 
-  const poster = `https://image.tmdb.org/t/p/w300/${poster_path}`;
+  const posterUrl = poster_path
+    ? `https://image.tmdb.org/t/p/w300/${poster_path}`
+    : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/640px-No-Image-Placeholder.svg.png";
 
   return (
     <div>
@@ -51,7 +53,7 @@ export default function MovieDetailsPage() {
       {filmDetails && (
         <div>
           <div className={css.detailsContainer}>
-            <img className={css.poster} src={poster} alt={title} />
+            <img className={css.poster} src={posterUrl} alt={title} />
             <div className={css.detailsFilm}>
               <ul>
                 <li>
@@ -83,10 +85,10 @@ export default function MovieDetailsPage() {
                 </li>
               </ul>
               <ul className={css.moreDetailsFilm}>
-                <Link className={css.filmInfo} to="cast">
+                <Link className={css.filmInfo} to="cast" state={backLinkHref}>
                   Cast
                 </Link>
-                <Link className={css.filmInfo} to="review">
+                <Link className={css.filmInfo} to="review" state={backLinkHref}>
                   Reviews
                 </Link>
               </ul>

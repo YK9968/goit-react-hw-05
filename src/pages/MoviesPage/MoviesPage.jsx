@@ -3,24 +3,31 @@ import { fetchSearchFilms } from "../../api-search-film";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import MovieList from "../../components/MovieList/MovieList";
-// import css from "./MoviesPage.module.css";
+import { useSearchParams } from "react-router-dom";
+import css from "./MoviesPage.module.css";
+import LoadMoreFilms from "../../components/LoadMoreFilms/LoadMoreFilms";
 
 export default function MoviesPage() {
   const [films, setFilms] = useState([]);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [data, setData] = useState([]);
+  console.log(films);
+  const filmQuery = searchParams.get("query") ?? "";
 
   useEffect(() => {
-    if (!query) {
+    if (!filmQuery) {
       return;
     }
 
     const fetchListFilm = async () => {
       try {
         setLoading(true);
-        const dataFilms = await fetchSearchFilms(query);
-        setFilms(dataFilms.results);
+        const dataFilms = await fetchSearchFilms(filmQuery, page);
+        setData(dataFilms);
+        setFilms((prevFilms) => [...prevFilms, ...dataFilms.results]);
       } catch (error) {
         setError(true);
       } finally {
@@ -29,29 +36,51 @@ export default function MoviesPage() {
     };
 
     fetchListFilm();
-  }, [query]);
+  }, [filmQuery, page]);
 
   const handleSearchFilms = (e) => {
     e.preventDefault();
+    setFilms([]);
+    setPage(1);
     const form = e.target;
-    setQuery(form.elements.search.value);
+    const qweryFilm = form.elements.search.value;
+    setSearchParams({ query: qweryFilm });
     setError(false);
     form.reset();
   };
 
+  const handleLoadMoreFilms = () => {
+    setPage((prewPage) => prewPage + 1);
+  };
+
   return (
     <div>
-      <form onSubmit={handleSearchFilms}>
+      <form onSubmit={handleSearchFilms} className={css.formMovies}>
         <input
+          className={css.inputMovies}
           name="search"
           type="text"
           autoComplete="off"
           placeholder="Search films"
         />
-        <button type="submit">Search</button>
+        <button className={css.btnMovies} type="submit">
+          Search
+        </button>
       </form>
       {loading && <Loading />}
-      {films.length > 0 && <MovieList films={films} />}
+
+      <MovieList films={films} />
+
+      {filmQuery && films.length === 0 && (
+        <p className={css.messageEr}>
+          Sorry, but we could not find anything for your query. Please try
+          again.
+        </p>
+      )}
+
+      {data.total_pages > page && (
+        <LoadMoreFilms onClick={handleLoadMoreFilms} />
+      )}
       {error && <Error />}
     </div>
   );

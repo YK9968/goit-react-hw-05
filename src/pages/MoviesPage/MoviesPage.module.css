@@ -1,0 +1,37 @@
+.formMovies {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.inputMovies {
+  width: 300px;
+  padding: 10px 5px;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+  color: white;
+}
+.inputMovies::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.btnMovies {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: border 0.2s ease-in-out;
+  width: 80px;
+}
+
+.btnMovies:hover {
+  border: 1px solid rgb(255, 255, 255);
+}
+
+.messageEr {
+  text-align: center;
+}

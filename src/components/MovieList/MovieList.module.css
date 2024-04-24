@@ -10,11 +10,13 @@
   height: 380px;
   text-align: center;
   overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 }
 
 .filmLink:hover {
   border: 1px solid rgb(255, 255, 255);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
 }
 
 .filmContainer {
@@ -27,4 +29,8 @@
 
 .filmTitle {
   padding: 5px;
+}
+
+.filmImg {
+  height: 300px;
 }

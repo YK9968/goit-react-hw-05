@@ -15,7 +15,11 @@ export default function MovieList({ films }) {
           >
             <img
               className={css.filmImg}
-              src={`https://image.tmdb.org/t/p/w200${film.poster_path}`}
+              src={
+                film.poster_path
+                  ? `https://image.tmdb.org/t/p/w200${film.poster_path}`
+                  : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/640px-No-Image-Placeholder.svg.png"
+              }
               alt={film.original_title}
             />
             <p className={css.filmTitle}>{film.original_title}</p>
