@@ -17,7 +17,7 @@ export default function MovieCast() {
       try {
         setError(false);
         setLoading(true);
-        const details = await aboutFilms(filmId);
+        const details = await aboutFilms(filmId, "credits");
         setFilmDetails(details.credits.cast);
       } catch (error) {
         setError(true);

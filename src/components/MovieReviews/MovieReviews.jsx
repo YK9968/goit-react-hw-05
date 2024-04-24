@@ -19,7 +19,7 @@ export default function MovieReviews() {
       try {
         setError(false);
         setLoading(true);
-        const details = await aboutFilms(filmId);
+        const details = await aboutFilms(filmId, "reviews");
         setFilmDetails(details.reviews.results);
       } catch (error) {
         setError(true);
