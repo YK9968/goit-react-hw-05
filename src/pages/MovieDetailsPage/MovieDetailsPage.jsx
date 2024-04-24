@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchAboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
@@ -10,10 +10,10 @@ export default function MovieDetailsPage() {
   const [filmDetails, setFilmDetails] = useState(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-
   const { filmId } = useParams();
   const location = useLocation();
   const backLinkHref = location.state ?? "/movies";
+  const linkRef = useRef();
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
@@ -30,7 +30,8 @@ export default function MovieDetailsPage() {
     };
 
     fetchFilmDetails();
-  }, [filmId]);
+    linkRef.current = backLinkHref;
+  }, [filmId, backLinkHref]);
 
   if (!filmDetails) {
     return;
