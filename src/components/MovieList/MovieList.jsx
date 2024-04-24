@@ -10,7 +10,7 @@ export default function MovieList({ films }) {
         <li className={css.filmContainerItem} key={film.id}>
           <Link
             className={css.filmLink}
-            to={`movies/${film.id}`}
+            to={`/movies/${film.id}`}
             state={location}
           >
             <img
