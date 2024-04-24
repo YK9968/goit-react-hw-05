@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { aboutFilms } from "../../api-details-film";
+import { fetchAboutFilms } from "../../api-details-film";
 import css from "./MovieReviews.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
@@ -19,7 +19,7 @@ export default function MovieReviews() {
       try {
         setError(false);
         setLoading(true);
-        const details = await aboutFilms(filmId, "reviews");
+        const details = await fetchAboutFilms(filmId, "reviews");
         setFilmDetails(details.reviews.results);
       } catch (error) {
         setError(true);

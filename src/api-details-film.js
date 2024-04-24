@@ -1,7 +1,7 @@
 import axios from "axios";
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 
-export const aboutFilms = async (id, parametr) => {
+export const fetchAboutFilms = async (id, parametr) => {
   const response = await axios.get(`/movie/${id}`, {
     params: {
       append_to_response: parametr,

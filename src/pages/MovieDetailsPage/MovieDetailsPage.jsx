@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { aboutFilms } from "../../api-details-film";
+import { fetchAboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
@@ -13,14 +13,14 @@ export default function MovieDetailsPage() {
 
   const { filmId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state ?? "/";
+  const backLinkHref = location.state ?? "/movies";
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
       try {
         setError(false);
         setLoading(true);
-        const details = await aboutFilms(filmId);
+        const details = await fetchAboutFilms(filmId);
         setFilmDetails(details);
       } catch (error) {
         setError(true);

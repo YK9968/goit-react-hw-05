@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { aboutFilms } from "../../api-details-film";
+import { fetchAboutFilms } from "../../api-details-film";
 import css from "./MovieCast.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
@@ -17,7 +17,7 @@ export default function MovieCast() {
       try {
         setError(false);
         setLoading(true);
-        const details = await aboutFilms(filmId, "credits");
+        const details = await fetchAboutFilms(filmId, "credits");
         setFilmDetails(details.credits.cast);
       } catch (error) {
         setError(true);
