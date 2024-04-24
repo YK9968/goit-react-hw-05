@@ -14,7 +14,6 @@ export default function MoviesPage() {
   const [page, setPage] = useState(1);
   const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState([]);
-  console.log(films);
   const filmQuery = searchParams.get("query") ?? "";
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export default function MoviesPage() {
         setLoading(true);
         const dataFilms = await fetchSearchFilms(filmQuery, page);
         setData(dataFilms);
-        setFilms((prevFilms) => [...prevFilms, ...dataFilms.results]);
+        setFilms(dataFilms.results);
       } catch (error) {
         setError(true);
       } finally {
@@ -49,8 +48,13 @@ export default function MoviesPage() {
     form.reset();
   };
 
-  const handleLoadMoreFilms = () => {
+  const handleNext = () => {
     setPage((prewPage) => prewPage + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const handlePrev = () => {
+    setPage((prewPage) => prewPage - 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -78,9 +82,13 @@ export default function MoviesPage() {
         </p>
       )}
 
-      {data.total_pages > page && (
-        <LoadMoreFilms onClick={handleLoadMoreFilms} />
-      )}
+      <LoadMoreFilms
+        next={handleNext}
+        prev={handlePrev}
+        totalPage={data.total_pages}
+        page={page}
+      />
+
       {error && <Error />}
     </div>
   );

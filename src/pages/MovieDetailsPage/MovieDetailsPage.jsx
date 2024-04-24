@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { fetchAboutFilms } from "../../api-details-film";
 import css from "./MovieDetailsPage.module.css";
@@ -95,7 +95,15 @@ export default function MovieDetailsPage() {
             </div>
           </div>
           <div>
-            <Outlet />
+            <Suspense
+              fallback={
+                <div>
+                  <Loading />
+                </div>
+              }
+            >
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       )}

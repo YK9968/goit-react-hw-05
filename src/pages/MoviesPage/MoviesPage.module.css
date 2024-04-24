@@ -24,12 +24,13 @@
   color: rgb(255, 255, 255);
   cursor: pointer;
   border-radius: 5px;
-  transition: border 0.2s ease-in-out;
+  transition: border, transform 0.3s ease-in-out;
   width: 80px;
 }
 
 .btnMovies:hover {
   border: 1px solid rgb(255, 255, 255);
+  transform: scale(1.1);
 }
 
 .messageEr {

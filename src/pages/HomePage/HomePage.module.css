@@ -6,16 +6,17 @@
   border-radius: 5px;
   font-size: 15px;
   cursor: pointer;
-  transition: border 0.3s ease-in-out;
+  transition: border, transform 0.3s ease-in-out;
 }
 
 .changeTop:hover {
   border: 1px solid rgb(255, 255, 255);
+  transform: scale(1.1);
 }
 
 .btnContainer {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 30px;
   justify-content: center;
 }

@@ -10,8 +10,6 @@ export default function MovieReviews() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  console.log(filmDetails);
-
   const { filmId } = useParams();
 
   useEffect(() => {
