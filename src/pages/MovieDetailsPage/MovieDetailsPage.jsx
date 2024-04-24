@@ -12,8 +12,7 @@ export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
   const { filmId } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state ?? "/movies";
-  const linkRef = useRef();
+  const backLinkHref = useRef(location.state ?? "/movies");
 
   useEffect(() => {
     const fetchFilmDetails = async () => {
@@ -30,8 +29,7 @@ export default function MovieDetailsPage() {
     };
 
     fetchFilmDetails();
-    linkRef.current = backLinkHref;
-  }, [filmId, backLinkHref]);
+  }, [filmId]);
 
   if (!filmDetails) {
     return;
@@ -48,7 +46,7 @@ export default function MovieDetailsPage() {
     <div>
       {loading && <Loading />}
 
-      <Link className={css.backBtn} to={backLinkHref}>
+      <Link className={css.backBtn} to={backLinkHref.current}>
         Go Back
       </Link>
       {filmDetails && (
@@ -86,10 +84,10 @@ export default function MovieDetailsPage() {
                 </li>
               </ul>
               <ul className={css.moreDetailsFilm}>
-                <Link className={css.filmInfo} to="cast" state={backLinkHref}>
+                <Link className={css.filmInfo} to="cast">
                   Cast
                 </Link>
-                <Link className={css.filmInfo} to="review" state={backLinkHref}>
+                <Link className={css.filmInfo} to="review">
                   Reviews
                 </Link>
               </ul>
