@@ -6,10 +6,20 @@
 
 .actorContainer {
   width: 150px;
-  height: 300px;
+  height: 250px;
   padding: 10px;
   border: 1px solid white;
   border-radius: 5px;
+  overflow: auto;
+}
+
+.actorContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+.actorContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
 }
 
 .castContainer {
