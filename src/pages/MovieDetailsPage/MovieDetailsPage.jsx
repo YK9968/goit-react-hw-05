@@ -5,6 +5,7 @@ import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { FaStar } from "react-icons/fa";
+import Trailer from "../../components/Trailer/Trailer";
 
 export default function MovieDetailsPage() {
   const [filmDetails, setFilmDetails] = useState(null);
@@ -44,6 +45,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
+      <Trailer id={filmId} />
       {loading && <Loading />}
 
       <Link className={css.backBtn} to={backLinkHref.current}>
