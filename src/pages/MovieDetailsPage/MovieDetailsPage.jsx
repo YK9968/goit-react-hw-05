@@ -45,7 +45,6 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      <Trailer id={filmId} />
       {loading && <Loading />}
 
       <Link className={css.backBtn} to={backLinkHref.current}>
@@ -53,14 +52,15 @@ export default function MovieDetailsPage() {
       </Link>
       {filmDetails && (
         <div>
+          <h2 className={css.filmTitle}>
+            {title} ({release_date})
+          </h2>
           <div className={css.detailsContainer}>
             <img className={css.poster} src={posterUrl} alt={title} />
             <div className={css.detailsFilm}>
               <ul>
                 <li>
-                  <h2 className={css.filmTitle}>
-                    {title} ({release_date})
-                  </h2>
+                  <Trailer id={filmId} />
                 </li>
                 <li>
                   <p className={css.filmText}>
