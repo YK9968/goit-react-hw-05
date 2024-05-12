@@ -5,7 +5,6 @@ import css from "./MovieDetailsPage.module.css";
 import Loading from "../../components/Loading/Loading";
 import Error from "../../components/Error/Error";
 import { FaStar } from "react-icons/fa";
-import Trailer from "../../components/Trailer/Trailer";
 
 export default function MovieDetailsPage() {
   const [filmDetails, setFilmDetails] = useState(null);
@@ -52,15 +51,15 @@ export default function MovieDetailsPage() {
       </Link>
       {filmDetails && (
         <div>
-          <h2 className={css.filmTitle}>
-            {title} ({release_date})
-          </h2>
+          {/* <Trailer id={filmId} /> */}
           <div className={css.detailsContainer}>
             <img className={css.poster} src={posterUrl} alt={title} />
             <div className={css.detailsFilm}>
               <ul>
                 <li>
-                  <Trailer id={filmId} />
+                  <h2 className={css.filmTitle}>
+                    {title} ({release_date})
+                  </h2>
                 </li>
                 <li>
                   <p className={css.filmText}>
@@ -91,6 +90,9 @@ export default function MovieDetailsPage() {
                 </Link>
                 <Link className={css.filmInfo} to="review">
                   Reviews
+                </Link>
+                <Link className={css.filmInfo} to="trailer">
+                  Trailer
                 </Link>
               </ul>
             </div>

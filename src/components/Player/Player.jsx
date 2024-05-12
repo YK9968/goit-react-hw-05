@@ -6,7 +6,7 @@ export default function Player({ trailer }) {
 
   return (
     <div className={css.trailerContainer}>
-      <ReactPlayer url={ulrTrailer} width="600px" height="400px" />
+      <ReactPlayer url={ulrTrailer} width="800px" height="600px" />
     </div>
   );
 }
